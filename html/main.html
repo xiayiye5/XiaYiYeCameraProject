@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>WinA</title>
+    <link rel="stylesheet" type="text/css" href="css/api.css" />
+    <link rel="stylesheet" type="text/css" href="css/box.css" />
+    <script type="text/javascript" src="script/public.js"></script>
+    <style>
+        p {
+            color: #999;
+            padding: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        //摄像机模块
+        var XiaYiYeCamera = null;
+        apiready = function() {
+            //摄像机模块
+            XiaYiYeCamera = api.require('XiaYiYeCamera');
+        }
+
+        //添加摄像机的方法
+        function addCamera() {
+            var param = {
+                jsData: "js传递过来的数据"
+            };
+            var resultCallback = function(ret, err) {
+                document.getElementById("cameraListData").innerHTML = JSON.stringify(ret);
+            }
+            XiaYiYeCamera.addCamera(param, resultCallback);
+        }
+        //获取本地摄像机列表的方法
+        function getLocalCameraList() {
+            var param = {
+                appParam: "getCameraListData"
+            };
+            var resultCallback = function(ret, err) {
+                document.getElementById("cameraListData").innerHTML = JSON.stringify(ret);
+            }
+            XiaYiYeCamera.getLocalCameraList(param, resultCallback);
+        }
+
+        //连接摄像机的方法
+        function connectCamera() {
+            var param = {
+                position: "0"
+            };
+            XiaYiYeCamera.connectCamera(param);
+        }
+        //打开摄像机的方法
+        function openCamera() {
+            var param = {
+                position: "0"
+            };
+            XiaYiYeCamera.openCamera(param);
+        }
+        //打开照片的方法
+        function openPicture() {
+            var param = {
+                cameraId: "TTTT-997741-UKYFK"
+            };
+            XiaYiYeCamera.openPicture(param);
+        }
+        //打开保存的视频方法
+        function openSaveVideo() {
+            var param = {
+                cameraId: "TTTT-997741-UKYFK"
+            };
+            XiaYiYeCamera.openSaveVideo(param);
+        }
+        //打开关于的页面方法
+        function openAboutPage() {
+            var param = {
+                cameraId: "TTTT-997741-UKYFK"
+            };
+            XiaYiYeCamera.openAboutPage(param);
+        }
+
+        //打开摄像机列表的方法
+        function openCameraList() {
+            var param = {
+                cameraId: "TTTT-997741-UKYFK"
+            };
+            XiaYiYeCamera.openCameraList(param);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="main">
+            <br>
+            <div class="clickbtn" tapmode="active" onclick="addCamera()">添加摄像机</div>
+            <br>
+            <div class="clickbtn" tapmode="active" onclick="getLocalCameraList()">获取本地摄像机列表</div>
+            <div style="font-size:0.8em;">相机列表数据:</div>
+            <div id="cameraListData" style="width:100%;word-wrap: break-word;word-break: normal;"></div>
+            <br>
+            <br>
+            <div class="clickbtn" tapmode="active" onclick="connectCamera()">连接摄相机</div>
+            <br>
+            <div class="clickbtn" tapmode="active" onclick="openCamera()">打开摄像机</div>
+            <br>
+            <div class="clickbtn" tapmode="active" onclick="openPicture()">照片</div>
+            <br>
+            <div class="clickbtn" tapmode="active" onclick="openSaveVideo()">打开保存的本地视频</div>
+            <br>
+            <div class="clickbtn" tapmode="active" onclick="openCameraList()">打开摄像机列表的方法</div>
+            <br>
+            <div class="clickbtn" tapmode="active" onclick="openAboutPage()">打开关于页面</div>
+            <br>
+        </div>
+    </div>
+</body>
+
+</html>
